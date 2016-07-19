@@ -1,0 +1,36 @@
+server:
+  port: 9999
+
+eureka:
+  enabled: true
+  instance:
+      preferIpAddress: true
+  client:
+    enabled: true
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+
+
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    continueOnError: true
+    url: jdbc:mysql://localhost/test?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    username: root
+    driver-class-name: com.mysql.jdbc.Driver
+    connection-test-query: SELECT 1
+    initial-size: 20
+    max-active: 55
+    max-idle: 21
+    min-idle: 12
+    validation-query: SELECT 1
+    test-on-borrow: true
+    poolSize: 20
